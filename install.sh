@@ -111,7 +111,11 @@ cat > ~/.bashrc << EOF
 export GOROOT=$GOROOT
 EOF
 
+## Add go to PATH
 append_line_if_not_found 'export PATH=${GOROOT}/bin:$PATH' ~/.bashrc
+## Add go workspace to PATH
+## It is where the additional go packages will be installed
+append_line_if_not_found 'export PATH=$PATH:`go env GOPATH`/bin' ~/.bashrc
 
 source ~/.bashrc
 
